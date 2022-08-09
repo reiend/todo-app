@@ -1,8 +1,9 @@
 import express from 'express';
 import dotenv from 'dotenv';
 
-
 dotenv.config();
+let test = 'qrq';
+test = 5;
 
 const app = express();
 const port = process.env.PORT;
