@@ -1,5 +1,6 @@
 import express from 'express';
 import mongodb from './db/mongodb';
+import cors from 'cors';
 import dotenv from 'dotenv';
 import router from './routes';
 import errorHandler from './middlewares/errorMiddleware';
@@ -10,6 +11,12 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 4000;
+
+app.use(
+  cors({
+    origin: '*'
+  })
+);
 
 // allow to read and write on request body
 app.use(express.json());
