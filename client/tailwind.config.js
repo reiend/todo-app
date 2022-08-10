@@ -4,8 +4,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'blue-koi': '#54A7D6'
+        'bleach-cedar': '#281733'
       }
+    },
+    fontFamily: {
+      inter: ['Inter', 'sans-serif']
     }
   }
 };

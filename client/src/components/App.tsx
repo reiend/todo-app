@@ -1,10 +1,13 @@
+import Header from './Header';
+import Overlay from './Overlay';
 import '../styles/App.scss';
 
 const App = () => {
   return (
-    <div className='bg-sky-300'>
-      <h1>hello world</h1>
-    </div>
+    <>
+      <Overlay />
+      <Header />
+    </>
   );
 };
 
