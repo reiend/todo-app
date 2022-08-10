@@ -1,4 +1,5 @@
 import { Response, Request } from 'express';
+import TodoModel from '../models/todoModel';
 
 type ServerCallBackType = (req: Request, res: Response) => void;
 interface TodoProps {
@@ -14,12 +15,15 @@ const Todo: TodoProps = {
     res.status(200).json({ message: 'list of todos' });
   },
 
-  createTodo: (req, res) => {
+  createTodo: async (req, res) => {
     if (!req.body.name) {
       res.status(400);
       throw new Error('please add name field');
     }
-    res.status(200).json({ message: 'created todo' });
+
+    const newTodo = await TodoModel.create(req.body);
+
+    res.status(201).json({ todo: newTodo });
   },
 
   getTodo: (req, res) => {
