@@ -2,8 +2,6 @@ const path = require('path'); /* node path */
 const tailwindcss = require('tailwindcss');
 const webpack = require('webpack');
 
-const PurgecssPlugin = require('purgecss-webpack-plugin'); /* for cleaning unused style */
-
 const ROOT_PATH = {
   src: path.resolve(__dirname, `../src`)
 };
