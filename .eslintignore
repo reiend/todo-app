@@ -1,0 +1,5 @@
+/client/src/libs
+/clientsrc/libs
+/client/webpack
+/client/src/declarations.d.ts
+/node_modules
