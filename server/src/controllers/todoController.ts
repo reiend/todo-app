@@ -48,8 +48,12 @@ const Todo: TodoProps = {
     res.status(200).json({ todo: updatedTodo });
   },
 
-  deleteTodo: (req, res) => {
-    res.status(200).json({ message: `deleted todo ${req.params.id}` });
+  deleteTodo: async (req, res) => {
+    const deletedTodo = await TodoModel.findOneAndDelete({
+      _id: req.params.id
+    });
+
+    res.status(200).json({ todo: deletedTodo });
   }
 };
 
