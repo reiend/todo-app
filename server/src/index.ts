@@ -1,4 +1,5 @@
 import express from 'express';
+import mongodb from './db/mongodb';
 import dotenv from 'dotenv';
 import router from './routes';
 import errorHandler from './middlewares/errorMiddleware';
@@ -19,7 +20,19 @@ app.use('/api/v1', router.todoRouter);
 // override default express error handler
 app.use(errorHandler);
 
-// run server
-app.listen(port, () => {
-  console.log(`listening on port ${port}`);
-});
+const initialize = async () => {
+  try {
+    const mongo = await mongodb(process.env.MONGO_URL);
+    console.log(`MongoDB connected ${mongo.connection.host}`);
+
+    // run server
+    app.listen(port, () => {
+      console.log(`listening on port ${port}`);
+    });
+  } catch (error) {
+    // halt the process
+    process.exit(1);
+  }
+};
+
+initialize();
