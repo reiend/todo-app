@@ -4,7 +4,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'bleach-cedar': '#281733'
+        'bleach-cedar': '#281733',
+        'purply-blue': '#BCB9EE'
       }
     },
     fontFamily: {

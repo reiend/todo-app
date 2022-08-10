@@ -10,8 +10,12 @@
     "build": "webpack --config webpack/webpack.config.js --env env=prod"
   },
   "dependencies": {
+    "@hookform/resolvers": "^2.9.6",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.33.1",
+    "react-icons": "^4.4.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/core": "^7.18.9",
