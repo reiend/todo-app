@@ -61,7 +61,7 @@ const Todo: TodoProps = {
       const updatedTodo = await TodoModel.findOneAndUpdate(
         { _id: req.params.id },
         req.body,
-        { new: true }
+        { new: true, runValidators: true }
       );
 
       if (!updatedTodo) {
