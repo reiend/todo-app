@@ -2,19 +2,19 @@ import { Response, Request } from 'express';
 
 type ServerCallBackType = (req: Request, res: Response) => void;
 interface TodoProps {
-  list: ServerCallBackType;
-  create: ServerCallBackType;
+  getTodos: ServerCallBackType;
+  createTodo: ServerCallBackType;
   getTodo: ServerCallBackType;
-  update: ServerCallBackType;
-  remove: ServerCallBackType;
+  updateTodo: ServerCallBackType;
+  deleteTodo: ServerCallBackType;
 }
 
 const Todo: TodoProps = {
-  list: (req, res) => {
+  getTodos: (req, res) => {
     res.status(200).json({ message: 'list of todos' });
   },
 
-  create: (req, res) => {
+  createTodo: (req, res) => {
     if (!req.body.name) {
       res.status(400);
       throw new Error('please add name field');
@@ -26,18 +26,19 @@ const Todo: TodoProps = {
     res.status(200).json({ message: 'viewing a todo' });
   },
 
-  update: (req, res) => {
-    if (!req.body.status) {
+  updateTodo: (req, res) => {
+    if (!(req.body.name && req.body.completed)) {
       res.status(400);
-      throw new Error('please add status field');
+      throw new Error('please add name and completed field');
     }
-    res.status(200).json({ message: 'created todo' });
+
+    res.status(200).json({ message: 'updated todo' });
     res.status(200).json({
       message: `update todo ${req.params.id}`
     });
   },
 
-  remove: (req, res) => {
+  deleteTodo: (req, res) => {
     res.status(200).json({ message: `deleted todo ${req.params.id}` });
   }
 };
