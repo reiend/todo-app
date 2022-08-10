@@ -1,4 +1,11 @@
-const errorHandler = (err: Error, req, res, next) => {
+import { Request, Response } from 'express';
+
+const errorHandler = (
+  err: Error,
+  req: Request,
+  res: Response,
+  next: () => void
+) => {
   const statusCode = res.statusCode ? res.statusCode : 500;
   res.status(statusCode);
   res.json({
