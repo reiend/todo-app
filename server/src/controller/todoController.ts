@@ -1,23 +1,51 @@
 import { Response, Request } from 'express';
+import TodoModel from '../models/todoModel';
+import asyncHandler from 'express-async-handler';
 
-const list = (req: Request, res: Response) => {
-  res.status(200).json({ message: 'get goals' });
-};
+const list = asyncHandler(async (req: Request, res: Response) => {
+  const todos = await TodoModel.find();
 
-const create = (req: Request, res: Response) => {
-  res.status(200).json({ message: 'post todo' });
-};
+  res.status(200).json({ todos });
+});
 
-const update = (req: Request, res: Response) => {
+const create = asyncHandler(async (req: Request, res: Response) => {
   if (!req.body.name) {
     res.status(400);
     throw new Error('Please add a name field');
   }
-  res.status(200).json({ todos: `update todo ${req.params.id}` });
-};
 
-const remove = (req: Request, res: Response) => {
-  res.status(200).json({ todos: `delete todo ${req.params.id}` });
+  const todo = await TodoModel.create({ name: req.body.name });
+  res.status(200).json(todo);
+});
+
+const update = asyncHandler(async (req: Request, res: Response) => {
+  const todo = await TodoModel.findById(req.params.id);
+
+  if (!todo) {
+    res.status(400);
+    throw new Error('Todo not found');
+  }
+
+  const updatedTodo = await TodoModel.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true }
+  );
+
+  res.status(200).json(updatedTodo);
+});
+
+const remove = async (req: Request, res: Response) => {
+  const todo = await TodoModel.findById(req.params.id);
+
+  if (!todo) {
+    res.status(400);
+    throw new Error('Todo not Found');
+  }
+
+  const deletedTodo = await TodoModel.findByIdAndDelete(req.params.id);
+
+  res.status(200).json(deletedTodo);
 };
 
 const Todo = {

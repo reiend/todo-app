@@ -2,7 +2,7 @@ import express, { Express } from 'express';
 import dotenv from 'dotenv';
 import router from './routes';
 import connectDb from './db/db';
-import errorHandler from './middleware/errorMiddleware';
+import errorHandler from './middlewares/errorMiddleware';
 
 // allow to use the env file
 dotenv.config();
