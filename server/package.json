@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc && uglifyjs build/index.js --output build/index.js",
     "prod": "node build",
-    "dev": "tsnd --respawn src"
+    "dev": "ts-node-dev --respawn --transpile-only --exit-child --watch src src"
   },
   "keywords": [],
   "author": "",
