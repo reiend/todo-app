@@ -10,7 +10,6 @@ dotenv.config();
 interface ServerProps {
   app: Express;
   initialize: () => void;
-  connectDb: () => void;
 }
 
 type ServerType = (port?: string | number) => ServerProps;
@@ -37,13 +36,12 @@ const server: ServerType = (port = process.env.PORT || 5000) => {
 
   return {
     app,
-    initialize,
-    connectDb
+    initialize
   };
 };
 
+connectDb();
 const server1 = server();
-server1.connectDb();
 server1.initialize();
 
 export { server1 };
