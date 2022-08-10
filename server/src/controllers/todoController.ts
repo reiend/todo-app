@@ -52,7 +52,7 @@ const Todo: TodoProps = {
   },
 
   updateTodo: async (req, res) => {
-    if (!(req.body.name && req.body.completed)) {
+    if (!req.body.name) {
       res.status(400);
       throw new Error('please add name and completed field');
     }

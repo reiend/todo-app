@@ -9,7 +9,7 @@ const todoRouter = express.Router();
 todoRouter.get('/todos', Todo.getTodos);
 todoRouter.post('/todos', Todo.createTodo);
 todoRouter.get('/todos/:id', Todo.getTodo);
-todoRouter.put('/todos/:id', Todo.updateTodo);
+todoRouter.patch('/todos/:id', Todo.updateTodo);
 todoRouter.delete('/todos/:id', Todo.deleteTodo);
 
 export default todoRouter;
