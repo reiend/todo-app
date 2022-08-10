@@ -4,7 +4,7 @@ type ServerCallBackType = (req: Request, res: Response) => void;
 interface TodoProps {
   list: ServerCallBackType;
   create: ServerCallBackType;
-  status: ServerCallBackType;
+  update: ServerCallBackType;
   remove: ServerCallBackType;
 }
 
@@ -21,14 +21,14 @@ const Todo: TodoProps = {
     res.status(200).json({ message: 'created todo' });
   },
 
-  status: (req, res) => {
+  update: (req, res) => {
     if (!req.body.status) {
       res.status(400);
       throw new Error('please add status field');
     }
     res.status(200).json({ message: 'created todo' });
     res.status(200).json({
-      message: `update status todo completed or not ${req.params.id}`
+      message: `update todo ${req.params.id}`
     });
   },
 
