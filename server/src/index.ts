@@ -1,6 +1,7 @@
 import express, { Express } from 'express';
 import dotenv from 'dotenv';
 import router from './routes';
+import connectDb from './db/db';
 import errorHandler from './middleware/errorMiddleware';
 
 // allow to use the env file
@@ -9,6 +10,7 @@ dotenv.config();
 interface ServerProps {
   app: Express;
   initialize: () => void;
+  connectDb: () => void;
 }
 
 type ServerType = (port?: string | number) => ServerProps;
@@ -35,11 +37,13 @@ const server: ServerType = (port = process.env.PORT || 5000) => {
 
   return {
     app,
-    initialize
+    initialize,
+    connectDb
   };
 };
 
 const server1 = server();
+server1.connectDb();
 server1.initialize();
 
 export { server1 };
