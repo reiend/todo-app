@@ -6,5 +6,9 @@
 @tailwind components;
 
 body {
-  @apply bg-bleach-cedar;
+  @apply bg-bleach-cedar font-inter;
+}
+
+input {
+  outline: none;
 }
