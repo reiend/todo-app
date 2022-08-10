@@ -28,8 +28,9 @@ const Todo: TodoProps = {
     res.status(201).json({ todo: newTodo });
   },
 
-  getTodo: (req, res) => {
-    res.status(200).json({ message: 'viewing a todo' });
+  getTodo: async (req, res) => {
+    const foundTodo = await TodoModel.findOne({ _id: req.params.id });
+    res.status(200).json({ todo: foundTodo });
   },
 
   updateTodo: (req, res) => {
