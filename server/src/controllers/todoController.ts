@@ -33,16 +33,19 @@ const Todo: TodoProps = {
     res.status(200).json({ todo: foundTodo });
   },
 
-  updateTodo: (req, res) => {
+  updateTodo: async (req, res) => {
     if (!(req.body.name && req.body.completed)) {
       res.status(400);
       throw new Error('please add name and completed field');
     }
 
-    res.status(200).json({ message: 'updated todo' });
-    res.status(200).json({
-      message: `update todo ${req.params.id}`
-    });
+    const updatedTodo = await TodoModel.findOneAndUpdate(
+      { _id: req.params.id },
+      req.body,
+      { new: true }
+    );
+
+    res.status(200).json({ todo: updatedTodo });
   },
 
   deleteTodo: (req, res) => {
