@@ -22,7 +22,7 @@ app.use(errorHandler);
 
 const initialize = async () => {
   try {
-    const mongo = await mongodb(process.env.MONGO_URL);
+    const mongo = await mongodb(process.env.MONGO_URL as string);
     console.log(`MongoDB connected ${mongo.connection.host}`);
 
     // run server
