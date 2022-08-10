@@ -3,6 +3,7 @@ import mongodb from './db/mongodb';
 import dotenv from 'dotenv';
 import router from './routes';
 import errorHandler from './middlewares/errorMiddleware';
+import notFoundHandler from './middlewares/notFoundMiddleware';
 
 // allow the use of env file
 dotenv.config();
@@ -18,7 +19,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/api/v1', router.todoRouter);
 
 // override default express error handler
+// catch invalid routes
 app.use(errorHandler);
+app.use(notFoundHandler);
 
 const initialize = async () => {
   try {
