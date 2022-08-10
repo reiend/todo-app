@@ -11,8 +11,10 @@ interface TodoProps {
 }
 
 const Todo: TodoProps = {
-  getTodos: (req, res) => {
-    res.status(200).json({ message: 'list of todos' });
+  getTodos: async (req, res) => {
+    const todos = await TodoModel.find();
+
+    res.status(200).json({ todos });
   },
 
   createTodo: async (req, res) => {
