@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { object, string } from 'yup';
+import { getTodos, createTodo } from '../services/todo';
 
 import { IoIosCreate } from 'react-icons/io';
 
@@ -12,7 +13,11 @@ const TodoSchema = object({
   name: string().max(128).required('please provide a name')
 });
 
-const TodoCreateForm = () => {
+interface TodoCreateFormProps {
+  setTodos: (todos) => void;
+}
+
+const TodoCreateForm = ({ setTodos }: TodoCreateFormProps) => {
   const {
     register,
     handleSubmit,
@@ -21,8 +26,17 @@ const TodoCreateForm = () => {
     resolver: yupResolver(TodoSchema)
   });
 
-  const onSubmit = () => {
-    console.log('submit');
+  const onSubmit = async data => {
+    await createTodo(JSON.stringify(data));
+
+    // update todos
+    await getTodos()
+      .then(res => {
+        setTodos(res.data.todos);
+      })
+      .catch(() => {
+        return <div>error</div>;
+      });
   };
 
   return (
