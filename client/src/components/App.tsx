@@ -1,6 +1,6 @@
 import Header from './Header';
 import Overlay from './Overlay';
-import TodoCreateForm from './TodoCreateForm';
+import TodoContainer from './TodoContainer';
 import '../styles/App.scss';
 
 const App = () => {
@@ -9,7 +9,7 @@ const App = () => {
       <Overlay />
       <Header />
       <main className='py-16 px-5 max-w-4xl w-full mx-auto'>
-        <TodoCreateForm />
+        <TodoContainer />
       </main>
     </>
   );
