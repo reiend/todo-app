@@ -26,13 +26,16 @@ const TodoCreateForm = ({ setTodos }: TodoCreateFormProps) => {
     resolver: yupResolver(TodoSchema)
   });
 
-  const onSubmit = async data => {
+  const onSubmit = async (data, e) => {
     await createTodo(JSON.stringify(data));
 
     // update todos
     await getTodos()
       .then(res => {
         setTodos(res.data.todos);
+
+        // reset input
+        e.target.reset();
       })
       .catch(() => {
         return <div>error</div>;
