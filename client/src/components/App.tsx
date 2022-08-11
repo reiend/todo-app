@@ -1,6 +1,6 @@
 import Header from './Header';
 import Overlay from './Overlay';
-import TodoContainer from './TodoContainer';
+import TodoContainer from './Todo/TodoContainer';
 import '../styles/App.scss';
 
 const App = () => {

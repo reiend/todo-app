@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 
-import { getTodos, deleteTodo, updateTodo } from '../services/todo';
+import { getTodos, deleteTodo, updateTodo } from '../../services/todo';
 
 interface TodoProps {
   name: string;

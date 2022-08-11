@@ -1,9 +1,9 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { getTodos, createTodo } from '../services/todo';
+import { getTodos, createTodo } from '../../services/todo';
 import { IoIosCreate } from 'react-icons/io';
 
-import TodoSchema from '../schemas/TodoSchema';
+import TodoSchema from '../../schemas/TodoSchema';
 
 interface TodoFormInputProps {
   name: string;

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getTodos } from '../services/todo';
+import { getTodos } from '../../services/todo';
 
 import TodoCreateForm from './TodoCreateForm';
 import TodoList from './TodoList';
