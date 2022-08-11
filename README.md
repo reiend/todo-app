@@ -30,7 +30,7 @@ npm start
 /api/v1/todos/:id 
 
 # Post
-# params { name: string, completed: boolean }
+# body { name: string, completed: boolean }
 /api/v1/todos  
 
 # Patch
