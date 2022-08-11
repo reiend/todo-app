@@ -1,10 +1,17 @@
+import Header from './Header';
+import Overlay from './Overlay';
+import TodoContainer from './Todo/TodoContainer';
 import '../styles/App.scss';
 
 const App = () => {
   return (
-    <div className='bg-sky-300'>
-      <h1>hello world</h1>
-    </div>
+    <>
+      <Overlay />
+      <Header />
+      <main className='py-16 px-5 max-w-4xl w-full mx-auto'>
+        <TodoContainer />
+      </main>
+    </>
   );
 };
 

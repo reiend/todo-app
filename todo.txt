@@ -1,0 +1,15 @@
+done
+  create todo item
+  mark todo item
+  delete todo item
+  view todo item
+  backend with node express
+
+todo
+  added toasts for creating and deleting todo
+  add edit todo ui for edit todo
+  remove prop drillings using context Api
+  BEMify classes
+
+  added auth backend
+  added auth frontend
