@@ -1,17 +1,13 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { object, string } from 'yup';
 import { getTodos, createTodo } from '../services/todo';
-
 import { IoIosCreate } from 'react-icons/io';
+
+import TodoSchema from '../schemas/TodoSchema';
 
 interface TodoFormInputProps {
   name: string;
 }
-
-const TodoSchema = object({
-  name: string().max(128).required('please provide a name')
-});
 
 interface TodoCreateFormProps {
   setTodos: (todos) => void;
